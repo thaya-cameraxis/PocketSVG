@@ -107,14 +107,11 @@
 #if TARGET_OS_IPHONE
 + (instancetype)bezierPathWithCGPath:(CGPathRef)cgPath
 {
-    if (NSProcessInfo.processInfo.operatingSystemVersion.majorVersion >= 9) {
-        return [super bezierPathWithCGPath:cgPath];
-    } else {
-        // iOS 8 and lower don't return instancetype...
-        SVGBezierPath *path = [self new];
-        path.CGPath = cgPath;
-        return path;
-    }
+    
+    SVGBezierPath *path = [self new];
+    path.CGPath = cgPath;
+    return path;
+    
 }
 #else
 + (instancetype)bezierPathWithCGPath:(CGPathRef)cgPath
